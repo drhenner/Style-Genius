@@ -14,6 +14,8 @@
           <%= form.text_field :email %>
         </li>
         <li>
+          <%#= tag("input", :type => :date, :name => 'user[form_birth_date]', :id => 'user_form_birth_date') %>
+
           <%= form.label :form_birth_date, "Birthday" %>
           <%= form.text_field :form_birth_date, :class => 'ui-yearpicker' %>
         </li>

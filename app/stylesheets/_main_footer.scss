@@ -4,6 +4,7 @@
   font-weight:bold;
   font-size:106%;
 
+  height: 3em;
   border-bottom: 1px solid #ECECEC;
   background: url("../../images/header/bg-header-wrap.png") repeat-x scroll center bottom #FFFFFF;
   text-align: left;
@@ -28,4 +29,8 @@
   li:hover {
     color: #AA5555;
   }
+}
+#footer_buffer {
+  height: 1em;
+  //padding-top:1em;
 }

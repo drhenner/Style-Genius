@@ -1,6 +1,6 @@
 class Admin::Merchandise::BrandsController < Admin::BaseController
   def index
-    @brands = Brand.all
+    @brands = Brand.order(:name).all
   end
 
   def show

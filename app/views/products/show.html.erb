@@ -8,7 +8,7 @@
 
 <div id='product'>
 
-  <div class='span-1<%=@product.variants.empty? ? '9' : '8' %> float-left last'>
+  <div class='span-20 column last'>
     <div class='span-9 float-left'>
       <%= image_tag(@product.featured_image(:product)) %><br/>
 
@@ -21,9 +21,10 @@
     </div>
     <% if @product.variants.empty? %>
       <h2><%= @product.name %> </h2>
-      <div id='no-variant-available' class=' span-8  last'>
-        Sorry this product is not currently available.
+      <div id='no-variant-available' class=' span-10  last ' style='text-align:left;'>
+        <%= raw @product.description %>
       </div>
+
     <% else %>
       <h2><%= @product.name %> </h2>
       <div id='all-variants' class='dkBlueBox span-8'>
@@ -48,23 +49,29 @@
       </div>
     <% end %>
   </div>
-  <div id='add-to-cart_form-wrapper' class='span-6 float-left last'>
-    <%= form_for  @cart_item, :as => :cart_item,
-                  :url  => shopping_cart_items_path(@cart_item),
-                  :html => { :id => 'new_cart_item' } do |f| %>
-        <%= f.hidden_field :variant_id, :value => @product.variants.first.try(:id) %>
-      <% unless @product.variants.empty? %>
-          <%= f.label :quantity, 'Quantity:' %>
-          <%= f.select :quantity, CartItem::QUANTITIES %>
+  <% unless @product.variants.empty? %>
+      <div id='add-to-cart_form-wrapper' class='span-6 float-left last'>
+        <%= form_for  @cart_item, :as => :cart_item,
+                      :url  => shopping_cart_items_path(@cart_item),
+                      :html => { :id => 'new_cart_item' } do |f| %>
+            <%= f.hidden_field :variant_id, :value => @product.variants.first.try(:id) %>
 
-        <div id='submit_add_to_cart' class="gradientbuttons redtheme ready-to-add-to-cart">
-          <ul>
-            <li><a>Add to Cart</a></li>
-          </ul>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
+              <%= f.label :quantity, 'Quantity:' %>
+              <%= f.select :quantity, CartItem::QUANTITIES %>
+
+            <div id='submit_add_to_cart' class="gradientbuttons redtheme ready-to-add-to-cart">
+              <ul>
+                <li><a>Add to Cart</a></li>
+              </ul>
+            </div>
+
+        <% end %>
+      </div>
+  <% else %>
+    <div id='go-to-site_form-wrapper' class='span-4 column last'>
+      <%= link_to 'Go to Site', raw(@product.external_link) , :class => 'button' if !@product.external_link.blank? %>
+    </div>
+  <% end %>
 </div>
 
 

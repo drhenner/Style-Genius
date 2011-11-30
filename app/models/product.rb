@@ -37,7 +37,7 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :variants, :reject_if => proc { |attributes| attributes['sku'].blank? }
   accepts_nested_attributes_for :product_properties, :reject_if => proc { |attributes| attributes['description'].blank? }, :allow_destroy => true
 
-  accepts_nested_attributes_for :images, :reject_if => lambda { |t| t['photo'].nil? }
+  accepts_nested_attributes_for :images, :reject_if => lambda { |t| (t['photo'].nil? && t['photo_from_link'].blank?) }
 
   validates :shipping_category_id,  :presence => true
   validates :tax_status_id,         :presence => true
@@ -48,6 +48,8 @@ class Product < ActiveRecord::Base
   validates :description_markup,    :presence => true, :length => { :maximum => 2255 }, :if => :active
   validates :meta_keywords,         :presence => true,       :length => { :maximum => 255 }
   validates :meta_description,      :presence => true,       :length => { :maximum => 255 }
+  validates :external_link,      :presence => false,       :length => { :maximum => 499 }
+
 
   # gives you the tax rate for the give state_id and the time.
   #  Tax rates can change from year to year so Time is a factor
@@ -227,7 +229,7 @@ end
               with(:deleted_at, nil)
             end
             paginate :page => params[:page].to_i, :per_page => params[:rows].to_i#params[:page], :per_page => params[:rows]
-          end
+          end.results
       end
     end
 =end

@@ -7,7 +7,6 @@
   <%#= stylesheet_link_tag :all %>
   <%= stylesheet_link_tag 'buttons.css', :media => 'screen, projection' %>
   <%= stylesheet_link_tag 'screen.css', :media => 'screen, projection' %>
-  <%= stylesheet_link_tag 'link_icons.css', :media => 'screen, projection' %>
   <%= stylesheet_link_tag 'sprite.css' %>
   <%= stylesheet_link_tag 'print.css', :media => 'print'%>
   <%= stylesheet_link_tag 'main.css' %>
@@ -23,6 +22,7 @@
 
 </head>
 <body >
+<div id='body_wrapper'>
   <div class="bp">
     <%= raw "<p class='flash_notice'> #{notice}</p>"  if notice %>
     <%= raw "<p class='flash_error'>#{alert}</p>"     if alert %>
@@ -39,9 +39,6 @@
             <%#= link_to 'RoR Ecommerce', root_path %>
           </h1>
           <ul id="menu-main">
-            <li id="menu-main-discover">
-              <a href="/"><strong>Commerce</strong> <span>that scales</span></a>
-            </li>
 
             <li class="" id="menu-main-cart">
                 <%= link_to(shopping_cart_items_path, :id => 'cart_items_buttons') do %>
@@ -83,7 +80,10 @@
       <%= yield %>
     </div>
   </div>
-
+  <div id="footer_buffer" class='bp'>
+    &nbsp;
+  </div>
+</div>
   <%= render 'shared/main_footer' %>
 
   <%= yield :bottom %>

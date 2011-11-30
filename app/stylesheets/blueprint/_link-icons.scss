@@ -1,3 +1,4 @@
+/*
 @mixin no-link-icon {
   background: transparent none !important;
   padding:    0 !important;
@@ -25,9 +26,7 @@
   a[href$=".rss"],
   a[href$=".rdf"],
   a[href^="aim:"]          { @include link-icon-base; }
-  a[href^="http:"]         { @include link-icon("external.png", false); }
   a[href^="mailto:"]       { @include link-icon("email.png", false); }
-  a[href^="http:"]:visited { @include link-icon("visited.png", false); }
   a[href$=".pdf"]          { @include link-icon("pdf.png", false); }
   a[href$=".doc"]          { @include link-icon("doc.png", false); }
   a[href$=".xls"]          { @include link-icon("xls.png", false); }
@@ -35,3 +34,4 @@
   a[href$=".rdf"]          { @include link-icon("feed.png", false); }
   a[href^="aim:"]          { @include link-icon("im.png", false); }
 }
+*/

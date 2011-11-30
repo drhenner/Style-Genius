@@ -14,6 +14,16 @@
 
 <div class='clear'></div>
   <div class='span-3'>
+    <%= form.label :external_link %>
+  </div>
+  <div class='span-16 last'>
+    <%= form.text_field :external_link, :class => 'span-16' %>
+  </div>
+
+<fieldset id="admin-product-general-info" class='span-10 column' style='margin-right:25px'>
+  <legend>General Info</legend>
+<div class='clear'></div>
+  <div class='span-3'>
     <%= form.label :name %>
   </div>
   <div class='span-6 last'>
@@ -57,7 +67,10 @@
     <%= form.label :product_type %>
   </div>
   <div class='span-6 last'>
-    <%= form.select :product_type_id, @select_product_types %>
+    <%#= form.select :product_type_id, @select_product_types %>
+    <%= form.select :product_type_id,
+                    nested_set_options(ProductType, ProductType.new) {|i, level| "#{'-' * level} #{i.name}" },
+                    { :include_blank => true } %>
   </div>
 
 <div class='clear'></div>
@@ -91,7 +104,7 @@
 
 
 
-<fieldset id="admin-product-properties" class='span-12'>
+<fieldset id="admin-product-properties" class='span-12 column last'>
   <legend>Properties</legend>
 
   <div id='select-product-prototype'>
