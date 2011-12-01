@@ -4,3 +4,7 @@
     <li> <%= link_to_unless_current pt_tab.name, products_path(:product_type_id => pt_tab.id) %> </li>
   <% end %>
 </ul>
+
+<ul id='main-myaccount-tabs'>
+    <li class='shopping_tab'>       <%= link_to_unless_current 'My Account', myaccount_overview_path if most_likely_user %> </li>
+</ul>
