@@ -6,6 +6,13 @@ class ProductType < ActiveRecord::Base
 
   FEATURED_TYPE_ID = 1
 
+  def self.livingroom_types
+    ProductType.room_types('Livingroom').self_and_children
+  end
+  
+  def self.bedroom_types
+    ProductType.room_types('Bedroom').self_and_children
+  end
   # paginated results from the admin ProductType grid
   #
   # @param [Optional params]
@@ -20,6 +27,12 @@ class ProductType < ActiveRecord::Base
     grid = grid.where("product_types.name LIKE '?%'", params[:name_starts_with]) if params[:name_starts_with].present?
     grid = grid.where("product_types.name LIKE '%?%'", params[:name_contains])   if params[:name_contains].present?
     grid.order(:name).paginate({:page => params[:page].to_i,:per_page => params[:rows].to_i})
+  end
+  
+  private
+  
+  def self.room_types(name)
+    ProductType.find_by_name(name).self_and_children
   end
 
 end

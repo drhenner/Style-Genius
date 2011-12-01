@@ -1,0 +1,2 @@
+module MyRooms::OverviewsHelper
+end

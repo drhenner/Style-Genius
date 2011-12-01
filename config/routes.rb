@@ -38,6 +38,7 @@ Hadean::Application.routes.draw do # |map|
   namespace :my_rooms do
     resource :bedroom, :only => [:show]
     resource :livingroom, :only => [:show]
+    resource  :overview, :only => [:show]
   end
 
   namespace :shopping do
