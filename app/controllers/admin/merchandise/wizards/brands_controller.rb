@@ -20,6 +20,7 @@ class Admin::Merchandise::Wizards::BrandsController < Admin::Merchandise::Wizard
   def update
     @brand = Brand.find_by_id(params[:id])
     if @brand
+      session[:product_wizard] ||= {}
       session[:product_wizard][:brand_id] = @brand.id
       flash[:notice] = "Successfully added brand."
       redirect_to next_form
