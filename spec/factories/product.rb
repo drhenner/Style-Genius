@@ -9,6 +9,7 @@ Factory.define :product do |u|
   u.name              { Factory.next(:name) }
   u.description       'Describe Product'
   u.description_markup 'Describe Product'
+  u.external_link 'http://www.google.com'
   u.product_type      { |c| c.association(:product_type) }
   u.prototype         { |c| c.association(:prototype) }
   u.shipping_category { |c| c.association(:shipping_category) }
