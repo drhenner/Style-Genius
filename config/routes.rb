@@ -35,6 +35,10 @@ Hadean::Application.routes.draw do # |map|
     resource  :store_credit, :only => [:show]
     resource  :overview, :only => [:show]
   end
+  namespace :my_rooms do
+    resource :bedroom, :only => [:show]
+    resource :livingroom, :only => [:show]
+  end
 
   namespace :shopping do
     resources  :cart_items do
