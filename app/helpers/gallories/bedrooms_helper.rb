@@ -1,0 +1,2 @@
+module Gallories::BedroomsHelper
+end

@@ -12,13 +12,11 @@ describe Admin::Inventory::AdjustmentsController do
   end
 
   it "show action should render show template" do
-    @product = Factory(:product)
     get :show, :id => @product.id
     response.should render_template(:show)
   end
 
   it "index action should render index template" do
-    @product = Factory(:product)
     get :index
     response.should render_template(:index)
   end

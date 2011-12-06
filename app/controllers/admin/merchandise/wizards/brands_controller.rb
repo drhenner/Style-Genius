@@ -33,7 +33,7 @@ class Admin::Merchandise::Wizards::BrandsController < Admin::Merchandise::Wizard
   private
 
   def form_info
-    @brands ||= Brand.all
+    @brands ||= Brand.order(:name).all
     @brand ||= Brand.new
   end
 

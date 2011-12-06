@@ -28,7 +28,7 @@ class Admin::Merchandise::Wizards::ProductTypesController < Admin::Merchandise::
   private
 
   def form_info
-    @product_types ||= ProductType.all
+    @product_types ||= ProductType.order(:name).all
     @product_type ||= ProductType.new
   end
 

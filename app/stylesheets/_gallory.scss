@@ -1,0 +1,27 @@
+.gallory-products-list {
+  display:inline-block;
+  padding-bottom:12px;
+  padding-left:0px;
+  float:left;
+  margin:0;
+
+  li {
+    margin-bottom:-12px;
+    img {
+      cursor:pointer;
+    }
+  }
+
+}
+
+#main-product {
+
+  font-weight:bold;
+  font-size:130%;
+  text-align: left;
+  color: #828282;
+
+  #featured_gallery_product_description {
+    margin-top:10px;
+  }
+}

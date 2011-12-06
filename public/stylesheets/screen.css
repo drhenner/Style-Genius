@@ -220,11 +220,6 @@ body.bp pre, body.bp code, body.bp tt {
 body.bp li ul, body.bp li ol {
   margin: 0;
 }
-/* line 75, ../../app/stylesheets/blueprint/_typography.scss */
-body.bp ul, body.bp ol {
-  margin: 0 1.5em 1.5em 0;
-  padding-left: 3.333em;
-}
 /* line 76, ../../app/stylesheets/blueprint/_typography.scss */
 body.bp ul {
   list-style-type: disc;
@@ -707,12 +702,6 @@ pre, code, tt {
 /* line 74, ../../app/stylesheets/blueprint/_typography.scss */
 li ul, li ol {
   margin: 0;
-}
-
-/* line 75, ../../app/stylesheets/blueprint/_typography.scss */
-ul, ol {
-  margin: 0 1.5em 1.5em 0;
-  padding-left: 3.333em;
 }
 
 /* line 76, ../../app/stylesheets/blueprint/_typography.scss */

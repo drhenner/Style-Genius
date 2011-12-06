@@ -6,4 +6,9 @@ class ShowroomProduct < ActiveRecord::Base
 
   validates :showroom_id, :presence => true
   validates :product_id, :presence => true
+
+  def inactivate
+    self.active = false
+    save
+  end
 end

@@ -7,7 +7,8 @@
 
 <div id='shopping_addresses_selections' class='span-18 last'>
   <% @tax_statuses.each do |tax_status| %>
-    <div class='span-8 box <%= cycle( '', 'last') %> <%= 'selected' if selected?(tax_status.id) %> '>
+    <div class='span-8 wizard-box <%= cycle( '', '', 'last') %> <%= 'selected' if selected?(tax_status.id) %> '
+         style='width:217px;'>
       <label><%= tax_status.name %></label><br/>
       <%= button_to 'Use', admin_merchandise_wizards_tax_status_path(tax_status),
                     :class => "button spade inline-block ",

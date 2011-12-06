@@ -1,0 +1,21 @@
+<h1> Bedroom </h1>
+
+<div  id='featured_gallory_product'
+      data-product_id=<%= @product.id %>
+      data-external_link=<%= @product.external_link %>
+      style='float:left;'>
+  <%= image_tag @product.featured_image(:product), :id => 'featured_gallory_product_image' %>
+</div>
+  <%= link_to 'Add to Showroom', '#',
+              :class => 'button add-to-showroom',
+              :id => 'add-product-to-bedroom',
+              :style => "#{room.has_product?(@product.id) ? 'display:none;' : '' }" %>
+  <%= link_to 'Remove from Showroom', '#',
+              :class => 'button remove-from-showroom',
+              :id => 'add-product-to-bedroom',
+              :style => "#{room.has_product?(@product.id) ? '' : 'display:none;' }" %>
+<%= link_to 'Buy Now', '#', :class => 'button buy-now', :id => 'buy-product-now-top' %>
+<div id='featured_gallery_product_description'>
+<%= raw @product.description %>
+</div>
+

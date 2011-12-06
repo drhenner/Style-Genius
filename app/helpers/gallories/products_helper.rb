@@ -1,0 +1,2 @@
+module Gallories::ProductsHelper
+end

@@ -6,12 +6,17 @@ class ProductType < ActiveRecord::Base
 
   FEATURED_TYPE_ID = 1
 
+  ROOM_TYPES = {
+            'Bedroom'     => ['Dressers', 'Beds', 'mattresses'],
+            'Livingroom'  => ['Couches', 'Chairs', 'TV Stands', 'End Tables', 'Coffee Tables']
+                }
+
   def self.livingroom_types
-    ProductType.room_types('Livingroom').self_and_children
+    ProductType.room_types('Livingroom')
   end
-  
+
   def self.bedroom_types
-    ProductType.room_types('Bedroom').self_and_children
+    ProductType.room_types('Bedroom')
   end
   # paginated results from the admin ProductType grid
   #
@@ -28,9 +33,9 @@ class ProductType < ActiveRecord::Base
     grid = grid.where("product_types.name LIKE '%?%'", params[:name_contains])   if params[:name_contains].present?
     grid.order(:name).paginate({:page => params[:page].to_i,:per_page => params[:rows].to_i})
   end
-  
+
   private
-  
+
   def self.room_types(name)
     ProductType.find_by_name(name).self_and_children
   end

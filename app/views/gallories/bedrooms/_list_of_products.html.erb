@@ -1,0 +1,8 @@
+<% @products.each do |product| %>
+  <li class=' column '>
+    <%= image_tag product.featured_image,
+                  'data-product_id' => product.id,
+                  :class => 'ar-widget product-listing-item',
+                  :style => 'height:75px;width:75px;' %>
+  </li>
+<% end %>

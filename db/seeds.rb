@@ -22,9 +22,9 @@ states_list   = YAML::load( File.open( file_to_load ) )
 states_list.each_pair do |key,state|
   s = State.find_by_abbreviation_and_country_id(state['attributes']['abbreviation'], state['attributes']['country_id'])
   State.create(state['attributes']) unless s
-end 
+end
 
-roles = Role::ROLES 
+roles = Role::ROLES
 roles.each do |role|
   Role.find_or_create_by_name(role)
 end
@@ -77,3 +77,12 @@ ReturnCondition::CONDITIONS.each do |value|
     ReturnCondition.create(:label => value, :description => value )
   end
 end
+
+#ProductType::ROOM_TYPES.each_pair do |key, values|
+#  unless ProductType.find_by_name(key)
+#    master_room_type = ProductType.create(:name => key)
+#    values.each do |v|
+#      ProductType.create(:name => v, :parent_id => master_room_type.id)
+#    end
+#  end
+#end

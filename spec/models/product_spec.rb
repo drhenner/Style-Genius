@@ -157,6 +157,27 @@ describe Product, "class methods" do
     pending "test for featured"
   end
 
+  context '#bedroom_stuff' do
+    it 'should return only bedroom related products' do
+      ProductType.delete_all
+      @product_type                 = Factory(:product_type, :name => 'Bedroom')
+      @product_type_bedding         = Factory(:product_type, :name => 'bedding', :parent_id => @product_type.id)
+      @product_type_something_else  = Factory(:product_type, :name => 'Livingroom')
+      @product1  = Factory(:product, :product_type_id => @product_type.id)
+      @product2  = Factory(:product, :product_type_id => @product_type_bedding.id)
+      @product3  = Factory(:product, :product_type_id => @product_type_something_else.id)
+
+      bedroom_stuff = Product.bedroom_stuff.all
+      bedroom_stuff.size.should == 2
+      bedroom_stuff.map(&:id).include?(@product3.id).should be_false
+      bedroom_stuff.map(&:id).include?(@product2.id).should be_true
+      bedroom_stuff.map(&:id).include?(@product1.id).should be_true
+
+    end
+  end
+end
+
+describe Product, "class methods" do
   context "#admin_grid(params = {}, active_state = nil)" do
 
     it "should return Products " do

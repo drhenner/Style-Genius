@@ -1,3 +1,13 @@
+.wizard-box {
+  @include rounded(4px);
+  border: 1px #DDD solid;
+  padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  background-color:#f6f6f6;
+
+}
 
 .button {
     display: inline-block;

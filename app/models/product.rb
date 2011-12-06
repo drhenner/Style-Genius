@@ -67,6 +67,18 @@ class Product < ActiveRecord::Base
                                         true]).order('start_date DESC').first
   end
 
+  def showroom_type
+    product_type.root
+  end
+
+  # Image that is featured for your product
+  #
+  # @param [Optional Symbol] the size of the image expected back
+  # @return [String] name of the file to show from the public folder
+  def featured_product_image
+    featured_image(image_size = :product)
+  end
+
   # Image that is featured for your product
   #
   # @param [Optional Symbol] the size of the image expected back
@@ -162,6 +174,10 @@ class Product < ActiveRecord::Base
     product ? product : includes(:images).where(['products.deleted_at IS NULL']).first
   end
 
+  def self.featured_bedroom
+    bedroom_stuff.featured
+  end
+
   def self.active
     where({ :products => {:active => true} } )
   end
@@ -178,6 +194,16 @@ class Product < ActiveRecord::Base
   def brand_name
     brand_id ? brand.name : ''
   end
+
+  def self.bedroom_stuff
+    where('product_type_id IN (?)', ProductType.bedroom_types.map(&:id))
+  end
+
+  def self.active_bedroom_products
+    where(["products.active = ? AND
+            products.product_type_id IN (#{ProductType.bedroom_types.map(&:id).join(',')})", true])
+  end
+
   # paginated results from the admin products grid
   #
   # @param [Optional params]
@@ -208,6 +234,8 @@ class Product < ActiveRecord::Base
     def sanitize_data
       self.permalink = name if permalink.blank? && name
       self.permalink = permalink.squeeze(" ").strip.gsub(' ', '-') if permalink
+
+      self.meta_description ||= [name[0..55], description.gsub(/<\/?[^>]*>/, "")[0..198]].join(': ') if name.present? && description.present?
     end
 end
 

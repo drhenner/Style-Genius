@@ -23,13 +23,11 @@
 </head>
 <body >
 <div id='body_wrapper'>
-  <div class="bp">
-    <%= raw "<p class='flash_notice'> #{notice}</p>"  if notice %>
-    <%= raw "<p class='flash_error'>#{alert}</p>"     if alert %>
-  </div>
-
-
-
+  <div id='main_wrapper'>
+    <div class="bp">
+      <%= raw "<p class='flash_notice'> #{notice}</p>"  if notice %>
+      <%= raw "<p class='flash_error'>#{alert}</p>"     if alert %>
+    </div>
 
     <div class=" bp">
       <div id="header_wrapper" class='bp'>
@@ -79,12 +77,10 @@
     <div id='content_wrapper' class='container'>
       <%= yield %>
     </div>
-  </div>
-  <div id="footer_buffer" class='bp'>
-    &nbsp;
+
   </div>
 </div>
-  <%= render 'shared/main_footer' %>
+<%= render 'shared/main_footer' %>
 
   <%= yield :bottom %>
 

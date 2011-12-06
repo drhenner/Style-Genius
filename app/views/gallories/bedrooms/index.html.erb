@@ -1,0 +1,16 @@
+<h1> Bedroom Gallery </h1>
+
+<div>
+  <div id='main-product' class='span-14 column ar-widget'>
+    <%= render :partial => 'featured_product' %>
+  </div>
+  <div class='span-10 column last' style='width:388px'>
+    <ul class='gallory-products-list'>
+      <%= render :partial => 'list_of_products' %>
+    </ul>
+  </div>
+</div>
+
+<% content_for :below_body do -%>
+  <%= javascript_include_tag 'gallory/product_listing' %>
+<% end %>

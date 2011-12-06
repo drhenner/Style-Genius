@@ -39,6 +39,10 @@ class User < ActiveRecord::Base
 
   belongs_to :account
 
+  has_many    :showrooms
+  has_one     :bedroom
+  has_one     :livingroom
+
   has_one     :store_credit
   has_many    :orders
   has_many    :completed_orders,          :class_name => 'Order',

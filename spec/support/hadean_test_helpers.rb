@@ -33,6 +33,19 @@ module Hadean
 
       @controller.stubs(:session_cart).returns(test_cart)
     end
+
+    def create_product_type_structure
+      ProductType::ROOM_TYPES.each_pair do |key, values|
+        unless ProductType.find_by_name(key)
+          master_room_type = Factory(:product_type, :name => key)# ProductType.create(:name => key)
+          values.each do |v|
+            Factory(:product_type, :name => v, :parent_id => master_room_type.id)
+            #ProductType.create(:name => v, :parent_id => master_room_type.id)
+          end
+        end
+      end
+    end
+
     #def admin_role
     #  role_by_name Role::ADMIN
     #end
