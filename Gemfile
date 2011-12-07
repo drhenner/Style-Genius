@@ -16,7 +16,6 @@ gem "jquery-rails"
 
 #gem 'memcache-client', '~> 1.8.5'
 #gem 'mercury-rails', git: 'https://github.com/jejacks0n/mercury.git', ref: '38df02f55e55b1656581b893b14a6e3e006f9b78'
-gem 'mysql2', '~> 0.3.10'
 
 gem 'nested_set', '~> 1.6.3'
 gem "nifty-generators", :git => 'git://github.com/drhenner/nifty-generators.git'
@@ -53,6 +52,7 @@ group :development do
   gem 'RedCloth'
 end
 group :test, :development do
+  gem 'mysql2', '~> 0.3.10'
   gem "rspec-rails", "~> 2.7.0"
   gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git'
   gem 'launchy'
@@ -95,6 +95,9 @@ group :test do
 
 end
 
+group :production do
+  gem  'pg'
+end
 
 
 
