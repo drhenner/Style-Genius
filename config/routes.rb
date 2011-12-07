@@ -43,6 +43,7 @@ Hadean::Application.routes.draw do # |map|
 
   namespace :gallories do
     resources :bedrooms
+    resources :livingrooms
     resources :products, :only => [:show, :create, :destroy]
   end
 

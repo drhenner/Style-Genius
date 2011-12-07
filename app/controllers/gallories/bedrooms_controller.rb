@@ -22,7 +22,7 @@ class Gallories::BedroomsController < Gallories::BaseController
 
   def destroy
     bedroom.showroom_products.map(&:inactivate)
-    flash[:notice] = "Successfully destroyed bedroom."
+    flash[:notice] = "Successfully removed item."
     redirect_to gallories_bedrooms_url
   end
 

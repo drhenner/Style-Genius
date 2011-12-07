@@ -1,23 +1,3 @@
 <h1> My Bedroom </h1>
 
-<% @bedroom.products.each do |product| %>
-  <ul
-        data-product_id=<%= product.id %>
-        data-external_link=<%= product.external_link %>
-        class='span-6 bedroom_gallory_product ar-widget'
-        style='float:left;'>
-            <li>
-                <h3><%= product.name %></h3>
-                <%= image_tag product.featured_image(:medium),
-                              :class => 'room_product_image',
-                              :style => 'display:block;margin-right: auto;margin-left: auto;' %>
-                <div>
-                  <%= raw product.description[0..100] %>
-                </div>
-                <%= link_to 'Remove from Showroom', '#',
-                            :class => 'button remove-from-showroom',
-                            :id => 'add-product-to-bedroom' %>
-                <%= link_to 'Buy Now', '#', :class => 'button buy-now', :id => 'buy-product-now-top' %>
-            </li>
-  </ul>
-<% end %>
+<%= render :partial => '/my_rooms/room', :locals => { :room => @bedroom } %>

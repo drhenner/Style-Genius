@@ -178,6 +178,10 @@ class Product < ActiveRecord::Base
     bedroom_stuff.featured
   end
 
+  def self.featured_livingroom
+    livingroom_stuff.featured
+  end
+
   def self.active
     where({ :products => {:active => true} } )
   end
@@ -198,6 +202,11 @@ class Product < ActiveRecord::Base
   def self.bedroom_stuff
     where('product_type_id IN (?)', ProductType.bedroom_types.map(&:id))
   end
+
+  def self.livingroom_stuff
+    where('product_type_id IN (?)', ProductType.livingroom_types.map(&:id))
+  end
+
 
   def self.active_bedroom_products
     where(["products.active = ? AND

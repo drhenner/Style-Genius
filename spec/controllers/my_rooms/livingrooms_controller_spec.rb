@@ -12,6 +12,12 @@ describe MyRooms::LivingroomsController do
 
   it "show action should render show template" do
     get :show
+    response.should redirect_to(gallories_bedrooms_url)
+  end
+
+  it "show action should render show template" do
+    @livingroom = Factory(:livingroom, :user => @user)
+    get :show
     response.should render_template(:show)
   end
 end
