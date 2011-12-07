@@ -12,7 +12,7 @@ describe MyRooms::LivingroomsController do
 
   it "show action should render show template" do
     get :show
-    response.should redirect_to(gallories_bedrooms_url)
+    response.should redirect_to(gallories_livingrooms_url)
   end
 
   it "show action should render show template" do
