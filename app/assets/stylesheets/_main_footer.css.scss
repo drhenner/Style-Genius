@@ -1,0 +1,40 @@
+#footer_wrapper {
+  position:relative;
+  bottom:0;
+  width:100%;
+
+  font-variant: small-caps;
+  font-weight:bold;
+  font-size:106%;
+
+  height: 3em;
+  // border-bottom: 1px solid #ECECEC;
+  background: image-url("header/bg-header-wrap.png") repeat-x scroll center bottom #FFFFFF;
+  text-align: left;
+  margin:-3em 0 0;
+  padding:0;
+  /*margin-top:50px;*/
+
+  li {
+    display: inline;
+    list-style: none;
+    color: #AA5555;
+    padding: 3px;
+    a {
+      color: #828282;
+    }
+    a:hover {
+      color: #AA5555;
+    }
+    .selected {
+      color: #AA5555 !important;
+    }
+  }
+  li:hover {
+    color: #AA5555;
+  }
+}
+#footer_buffer {
+  height: 1em;
+  //padding-top:1em;
+}

@@ -7,8 +7,8 @@ module Jqgrid
 
     def jqgrid_javascripts
       locale = I18n.locale rescue :en
-      js = javascript_include_tag('jquery-ui-1.8.12.custom.min.js') + "\n"
-      js << javascript_include_tag("jqgrid/i18n/grid.locale-#{locale}.js") + "\n"
+      #js = javascript_include_tag('jquery-ui-1.8.12.custom.min.js') + "\n"
+      js = javascript_include_tag("jqgrid/i18n/grid.locale-#{locale}.js") + "\n"
       js << javascript_include_tag('jqgrid/jquery.jqGrid.min.js') + "\n"
       # Don't know if we need it, if smth not working, just uncomment it
       #js << javascript_include_tag('jqgrid/jquery.layout.js') + "\n"
@@ -199,41 +199,41 @@ module Jqgrid
 
         subgrid = %Q(
         subGridRowExpanded: function(subgrid_id, row_id) {
-        		var subgrid_table_id, pager_id;
-        		subgrid_table_id = subgrid_id+"_t";
-        		pager_id = "p_"+subgrid_table_id;
-        		$("#"+subgrid_id).html("<table id='"+subgrid_table_id+"' class='scroll'></table><div id='"+pager_id+"' class='scroll'></div>");
-        		jQuery("#"+subgrid_table_id).jqGrid({
-        			url:"#{options[:subgrid][:url]}?q=2&id="+row_id,
+            var subgrid_table_id, pager_id;
+            subgrid_table_id = subgrid_id+"_t";
+            pager_id = "p_"+subgrid_table_id;
+            $("#"+subgrid_id).html("<table id='"+subgrid_table_id+"' class='scroll'></table><div id='"+pager_id+"' class='scroll'></div>");
+            jQuery("#"+subgrid_table_id).jqGrid({
+              url:"#{options[:subgrid][:url]}?q=2&id="+row_id,
               editurl:'#{options[:subgrid][:edit_url]}?parent_id='+row_id,
-        			datatype: "json",
-        			colNames: #{sub_col_names},
-        			colModel: #{sub_col_model},
-        		   	rowNum:#{options[:subgrid][:rows_per_page]},
-        		   	pager: pager_id,
-        		   	imgpath: '/images/jqgrid',
-        		   	sortname: '#{options[:subgrid][:sort_column]}',
-        		    sortorder: '#{options[:subgrid][:sort_order]}',
+              datatype: "json",
+              colNames: #{sub_col_names},
+              colModel: #{sub_col_model},
+                rowNum:#{options[:subgrid][:rows_per_page]},
+                pager: pager_id,
+                imgpath: '/images/jqgrid',
+                sortname: '#{options[:subgrid][:sort_column]}',
+                sortorder: '#{options[:subgrid][:sort_order]}',
                 viewrecords: true,
                 toolbar : [true,"top"],
-        		    #{subgrid_inline_edit}
-        		    #{subgrid_direct_link}
-        		    height: '100%'
-        		})
-        		.navGrid("#"+pager_id,{edit:#{options[:subgrid][:edit]},add:#{options[:subgrid][:add]},del:#{options[:subgrid][:delete]},search:false})
-        		.navButtonAdd("#"+pager_id,{caption:"Search",title:"Toggle Search",buttonimg:'/images/jqgrid/search.png',
-            	onClickButton:function(){
-            		if(jQuery("#t_"+subgrid_table_id).css("display")=="none") {
-            			jQuery("#t_"+subgrid_table_id).css("display","");
-            		} else {
-            			jQuery("#t_"+subgrid_table_id).css("display","none");
-            		}
-            	}
+                #{subgrid_inline_edit}
+                #{subgrid_direct_link}
+                height: '100%'
+            })
+            .navGrid("#"+pager_id,{edit:#{options[:subgrid][:edit]},add:#{options[:subgrid][:add]},del:#{options[:subgrid][:delete]},search:false})
+            .navButtonAdd("#"+pager_id,{caption:"Search",title:"Toggle Search",buttonimg:'/images/jqgrid/search.png',
+              onClickButton:function(){
+                if(jQuery("#t_"+subgrid_table_id).css("display")=="none") {
+                  jQuery("#t_"+subgrid_table_id).css("display","");
+                } else {
+                  jQuery("#t_"+subgrid_table_id).css("display","none");
+                }
+              }
             });
             jQuery("#t_"+subgrid_table_id).height(25).hide().filterGrid(""+subgrid_table_id,{gridModel:true,gridToolbar:true});
-        	},
-        	subGridRowColapsed: function(subgrid_id, row_id) {
-        	},
+          },
+          subGridRowColapsed: function(subgrid_id, row_id) {
+          },
         )
       end
 

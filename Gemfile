@@ -3,11 +3,23 @@ source 'http://rubygems.org'
 ## Bundle rails:
 gem 'rails', '~> 3.1.3'
 
+group :assets do
+
+  gem 'coffee-rails', "~> 3.1.0"
+  gem 'uglifier'
+end
+  gem 'sass-rails', "  ~> 3.1.0"
+# If you use compass:
+
+
 gem "activemerchant", '~> 1.17.0'#, :lib => 'active_merchant'
 gem 'authlogic', "3.0.3"
 gem 'bluecloth',     '~> 2.1.0'
 gem 'cancan', '~> 1.4.1'
-gem 'compass', "~> 0.11.5"
+#gem 'compass', "~> 0.11.5"
+#gem 'compass', '~> 0.12.alpha.2'
+gem 'compass', git: 'git://github.com/chriseppstein/compass', branch: 'master'
+#gem 'compass', git: 'https://github.com/chriseppstein/compass.git', branch: 'rails31'
 #  gem 'dalli', '~> 1.0.2'
 
 gem "friendly_id", "~> 3.3"
@@ -29,6 +41,7 @@ gem 'rmagick',    :require => 'RMagick'
 gem 'rake', '= 0.9.2'
 gem 'ssl_requirement'
 gem 'state_machine', '~> 1.0.1'
+gem 'survey_says', :git => 'git@github.com:drhenner/survey_says.git'
 #gem 'sunspot_solr'
 #gem 'sunspot_rails', '~> 1.3.0rc'
 gem 'will_paginate', '~> 3.0.0'

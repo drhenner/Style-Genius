@@ -7,7 +7,7 @@ puts '
      If you are using heroku go to config/initializers/compass and un-comment the compass config code...
 ************************************************
 '
-#=begin
+=begin
 
     if ::Rails.env == "production"
       require 'fileutils'
@@ -24,4 +24,4 @@ puts '
     else
       #Compass::AppIntegration::Rails.initialize!
     end
-#=end
+=end
