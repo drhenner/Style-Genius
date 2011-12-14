@@ -16,10 +16,10 @@ gem "activemerchant", '~> 1.17.0'#, :lib => 'active_merchant'
 gem 'authlogic', "3.0.3"
 gem 'bluecloth',     '~> 2.1.0'
 gem 'cancan', '~> 1.4.1'
-#gem 'compass', "~> 0.11.5"
+
 #gem 'compass', '~> 0.12.alpha.2'
 gem 'compass', git: 'git://github.com/chriseppstein/compass', branch: 'master'
-#gem 'compass', git: 'https://github.com/chriseppstein/compass.git', branch: 'rails31'
+
 #  gem 'dalli', '~> 1.0.2'
 
 gem "friendly_id", "~> 3.3"

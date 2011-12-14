@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111201201239) do
+ActiveRecord::Schema.define(:version => 20111214085731) do
 
   create_table "accounting_adjustments", :force => true do |t|
     t.integer  "adjustable_id",                                 :null => false
@@ -62,6 +62,17 @@ ActiveRecord::Schema.define(:version => 20111201201239) do
   add_index "addresses", ["addressable_id"], :name => "index_addresses_on_addressable_id"
   add_index "addresses", ["addressable_type"], :name => "index_addresses_on_addressable_type"
   add_index "addresses", ["state_id"], :name => "index_addresses_on_state_id"
+
+  create_table "answers", :force => true do |t|
+    t.integer  "question_id",                   :null => false
+    t.text     "details"
+    t.boolean  "active",      :default => true
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "answers", ["question_id"], :name => "index_answers_on_question_id"
 
   create_table "batches", :force => true do |t|
     t.string   "batchable_type"
@@ -384,6 +395,23 @@ ActiveRecord::Schema.define(:version => 20111201201239) do
   add_index "purchase_orders", ["supplier_id"], :name => "index_purchase_orders_on_supplier_id"
   add_index "purchase_orders", ["tracking_number"], :name => "index_purchase_orders_on_tracking_number"
 
+  create_table "questionnaires", :force => true do |t|
+    t.string "name", :null => false
+  end
+
+  add_index "questionnaires", ["name"], :name => "index_questionnaires_on_name"
+
+  create_table "questions", :force => true do |t|
+    t.text     "details",                            :null => false
+    t.boolean  "active",           :default => true
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "questionnaire_id"
+  end
+
+  add_index "questions", ["questionnaire_id"], :name => "index_questions_on_questionnaire_id"
+
   create_table "return_authorizations", :force => true do |t|
     t.string   "number"
     t.decimal  "amount",         :precision => 8, :scale => 2,                   :null => false
@@ -434,6 +462,17 @@ ActiveRecord::Schema.define(:version => 20111201201239) do
   end
 
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "scores", :force => true do |t|
+    t.integer  "answer_id",          :null => false
+    t.integer  "survey_property_id", :null => false
+    t.integer  "value",              :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "scores", ["answer_id"], :name => "index_scores_on_answer_id"
+  add_index "scores", ["survey_property_id"], :name => "index_scores_on_survey_property_id"
 
   create_table "shipments", :force => true do |t|
     t.integer  "order_id"
@@ -553,6 +592,24 @@ ActiveRecord::Schema.define(:version => 20111201201239) do
     t.datetime "updated_at"
   end
 
+  create_table "survey_images", :force => true do |t|
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
+    t.integer  "position"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.string   "caption"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "survey_properties", :force => true do |t|
+    t.string   "name",       :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tax_rates", :force => true do |t|
     t.decimal "percentage",    :precision => 8, :scale => 2, :default => 0.0,  :null => false
     t.integer "tax_status_id",                                                 :null => false
@@ -600,6 +657,16 @@ ActiveRecord::Schema.define(:version => 20111201201239) do
   end
 
   add_index "transactions", ["batch_id"], :name => "index_transactions_on_batch_id"
+
+  create_table "user_answers", :force => true do |t|
+    t.integer  "user_id",    :null => false
+    t.integer  "answer_id",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_answers", ["answer_id"], :name => "index_user_answers_on_answer_id"
+  add_index "user_answers", ["user_id"], :name => "index_user_answers_on_user_id"
 
   create_table "user_roles", :force => true do |t|
     t.integer "role_id", :null => false

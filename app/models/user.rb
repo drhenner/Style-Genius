@@ -38,6 +38,10 @@ class User < ActiveRecord::Base
                   :phone_attributes
 
   belongs_to :account
+  has_many :user_answers
+  has_many :answers, :through => :user_answers
+
+  acts_as_survey_says
 
   has_many    :showrooms
   has_one     :bedroom
@@ -143,6 +147,10 @@ class User < ActiveRecord::Base
       transition :from => any, :to => :canceled
     end
 
+  end
+
+  def survey_admin?
+    true # add code here...  return true for users that can add/edit the survey information
   end
 
   # returns true or false if the user is active or not
