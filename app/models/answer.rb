@@ -5,7 +5,7 @@ class Answer < ActiveRecord::Base
                           :order      => :position,
                           :dependent  => :destroy
 
-  validates :question_id, :presence => true
+  #validates :question_id, :presence => true
   validates :details,     :presence => true
 
   accepts_nested_attributes_for :scores, :reject_if => proc { |attributes| attributes['value'].blank? }
@@ -16,6 +16,6 @@ class Answer < ActiveRecord::Base
   end
 
   def image(s = :small)
-    survey_images.first ? survey_images.first.photo.url(:small) : ''
+    survey_images.first ? survey_images.first.photo.url(s) : ''
   end
 end

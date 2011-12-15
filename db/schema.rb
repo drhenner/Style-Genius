@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111214085731) do
+ActiveRecord::Schema.define(:version => 20111214223514) do
 
   create_table "accounting_adjustments", :force => true do |t|
     t.integer  "adjustable_id",                                 :null => false
@@ -659,10 +659,11 @@ ActiveRecord::Schema.define(:version => 20111214085731) do
   add_index "transactions", ["batch_id"], :name => "index_transactions_on_batch_id"
 
   create_table "user_answers", :force => true do |t|
-    t.integer  "user_id",    :null => false
-    t.integer  "answer_id",  :null => false
+    t.integer  "user_id",     :null => false
+    t.integer  "answer_id",   :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "question_id"
   end
 
   add_index "user_answers", ["answer_id"], :name => "index_user_answers_on_answer_id"

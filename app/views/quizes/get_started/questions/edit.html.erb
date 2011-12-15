@@ -1,0 +1,11 @@
+<h1> Edit Question </h1>
+
+<%= form_for @question, :url => [:quizes, :get_started, @question] do |f| %>
+  <%=  render :partial => 'form', :locals => {:f => f} %>
+  <div class="actions"><%= f.submit 'Update' , :class => 'button' %></div>
+<% end %>
+
+<p>
+  <%= link_to "Show", [:quizes, :get_started, @question], :class => 'button' %> |
+  <%= link_to "View All", quizes_get_started_questions_path, :class => 'button' %>
+</p>

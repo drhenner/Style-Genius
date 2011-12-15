@@ -1,0 +1,26 @@
+.answer-radio-button {
+  border:4px #CCC solid;
+  text-align: center;
+  @include rounded(8px);
+}
+.answer-radio-button:hover {
+  border:4px #ACF solid;
+}
+.answer-radio-button.selected {
+  border:4px #ACF solid;
+}
+.question {
+  font-family: Helvetica Neue;
+  font-weight: bold;
+  color: #888;
+}
+
+#complete-wrapper {
+  .complete {
+
+    font-weight:bold;
+    font-size:130%;
+    text-align: left;
+    color: #828282;
+  }
+}

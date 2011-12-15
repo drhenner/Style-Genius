@@ -11,7 +11,7 @@
                               :class => 'room_product_image',
                               :style => 'display:block;margin-right: auto;margin-left: auto;' %>
                 <div>
-                  <%= raw product.description[0..100] %>
+                  <%= raw truncate( product.description, :limit => 100) %>
                 </div>
                 <%= link_to 'Remove from Showroom', '#',
                             :class => 'button remove-from-showroom',

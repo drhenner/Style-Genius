@@ -1,0 +1,20 @@
+
+  <%= f.error_messages %>
+<ul>
+  <li class="field">
+    <%= f.label :details %>
+    <%= f.text_area :details %>
+  </li>
+  <li class="field">
+    <%= f.label :active %>
+    <%= f.check_box :active %>
+  </li>
+  <li class="field">
+    <%= f.label :position %>
+    <%= f.number_field :position %>
+  </li>
+  <li class="field">
+    <%= f.label :questionnaire_id %>
+    <%= f.number_field :questionnaire_id %>
+  </li>
+</ul>

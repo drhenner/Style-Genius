@@ -1,0 +1,22 @@
+
+<% content_for :head do -%>
+  <%= stylesheet_link_tag 'quiz.css' %>
+<% end %>
+
+<h1> <%= @question.questionnaire.name %> Question <%= @question.position %> </h1>
+
+<p class='question'>
+  <%= @question.details %>
+</p>
+<div>
+  <% @question.answers.each do |answer| %>
+    <div class='span-9 column answer-radio-button' data-answer_id=<%= answer.id %> >
+      <%= image_tag answer.image(:product) %>
+    </div>
+  <% end %>
+</div>
+
+
+<% content_for :bottom do -%>
+  <%= javascript_include_tag 'quiz' %>
+<% end %>

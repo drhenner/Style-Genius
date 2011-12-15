@@ -22,6 +22,16 @@ Hadean::Application.routes.draw do # |map|
 
   root :to => "welcome#index"
 
+  namespace :quizes do
+    namespace :get_started do
+      resources :questions ,  :only => [:index, :show, :new, :create, :edit, :update, :complete] do
+        member do
+          get :complete
+        end
+      end
+    end
+  end
+
   namespace :customer do
     resources :registrations,   :only => [:new, :create]
     resource  :password_reset,  :only => [:new, :create, :edit, :update]
