@@ -13,6 +13,7 @@ if (typeof Hadean.Quiz.question == "undefined") {
         //test    : null,
         initialize      : function( ) {
           jQuery('.answer-radio-button').live('click', function(){
+            jQuery(this).addClass('selected');
             var answerId = jQuery(this).data('answer_id');
             Hadean.Quiz.question.selectAnswer(answerId);
           });

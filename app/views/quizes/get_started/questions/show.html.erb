@@ -8,11 +8,18 @@
 <p class='question'>
   <%= @question.details %>
 </p>
+
 <div>
   <% @question.answers.each do |answer| %>
-    <div class='span-9 column answer-radio-button' data-answer_id=<%= answer.id %> >
-      <%= image_tag answer.image(:product) %>
-    </div>
+    <% unless image_tag answer.image.blank? %>
+      <div class='span-9 column answer-radio-button' data-answer_id=<%= answer.id %> >
+        <%= image_tag answer.image(:product) %>
+      </div>
+    <% else %>
+      <div class='span-10 answer-radio-button clearfix' data-answer_id=<%= answer.id %> >
+        <%= image_tag answer.details %>
+      </div>
+    <% end %>
   <% end %>
 </div>
 
