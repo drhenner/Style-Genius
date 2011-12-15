@@ -11,7 +11,6 @@ end
   gem 'sass-rails', "  ~> 3.1.0"
 # If you use compass:
 
-
 gem "activemerchant", '~> 1.17.0'#, :lib => 'active_merchant'
 gem 'authlogic', "3.0.3"
 gem 'bluecloth',     '~> 2.1.0'
