@@ -15,7 +15,7 @@
 
       <% @product_types.each do |product_type| %>
         <tr>
-          <td><%= product_type.display_name %></td>
+          <td><%= product_type.name %></td>
           <td><%= link_to 'Edit', edit_admin_merchandise_product_type_path(product_type) %></td>
         </tr>
       <% end %>
