@@ -36,33 +36,12 @@
           <h1 id="logo">
             <%= link_to image_tag( "logos/#{Image::MAIN_LOGO}.png", :alt => 'hadean image.'), root_path %>
           </h1>
-          <ul id="menu-main">
-            <li id="menu-main-discover">
-              <a href="/"> <strong> About </strong> <span>How it Works</span> </a>
-            </li>
 
+          <div id='non-logo-header' class=''>
+            <%= render '/layouts/main_menu_list' %>
 
-            <li class="" id="menu-main-wish">
-                <%= link_to(wish_items_path, :id => 'wish_items_button') do %>
-                    <strong> Wish List </strong> <span>what you want.</span>
-                <% end %>
-            </li>
-
-            <li class="" id="menu-main-user">
-              <div>
-                <% unless most_likely_user %>
-                  <strong><%= link_to 'Login',  login_path %></strong> or
-                  <span><%= link_to 'Sign up', signup_path %></span>
-                <% else %>
-                  <strong>Hi <%= most_likely_user.first_name %></strong>
-                  <span>(<%= link_to 'not you?', logout_path %>)</span>
-                <% end %>
-              </div>
-            </li>
-
-          </ul>
-
-          <%= render '/layouts/product_search' %>
+            <%= render '/layouts/product_search' %>
+          </div>
         </div>
       </div>
       <div id="sub_header_wrapper" class='bp'>

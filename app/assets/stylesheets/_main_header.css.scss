@@ -114,9 +114,13 @@
             background: none repeat scroll 0 0 #FFFFFF;
           }
         }
+
       }
     }
-
+    #non-logo-header {
+      display:block;
+      float:right;
+    }
     #menu-sub {
       border: 0 none;
       display: inline;
