@@ -6,13 +6,6 @@ class Admin::Merchandise::VariantsController < Admin::BaseController
     @variants = @product.variants.admin_grid(@product, params)
     respond_to do |format|
       format.html
-      format.json { render :json => @variants.to_jqgrid_json(
-        [ :product_name, :sku, :price ],
-        @variants.per_page, #params[:page],
-        @variants.current_page, #params[:rows],
-        @variants.total_entries)
-
-      }
     end
   end
 

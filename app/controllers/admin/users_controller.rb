@@ -7,13 +7,6 @@ class Admin::UsersController < Admin::BaseController
     @users = User.admin_grid(params)
     respond_to do |format|
       format.html
-      format.json { render :json => @users.to_jqgrid_json(
-        [ :first_name, :last_name, :email, :state ],
-        @users.per_page, #params[:page],
-        @users.current_page, #params[:rows],
-        @users.total_entries)
-
-      }
     end
 
   end

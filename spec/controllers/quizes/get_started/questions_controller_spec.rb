@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../spec_helper'
+require  'spec_helper'
 
 describe Quizes::GetStarted::QuestionsController do
   # fixtures :all
@@ -24,14 +24,14 @@ describe Quizes::GetStarted::QuestionsController do
   it "create action should render new template when model is invalid" do
     question = Factory.build(:question)
     Question.any_instance.stubs(:valid?).returns(false)
-    post :create, :question => { question.attributes }
+    post :create, :question => question.attributes
     response.should render_template(:new)
   end
 
   it "create action should redirect when model is valid" do
     question = Factory.build(:question)
     Question.any_instance.stubs(:valid?).returns(true)
-    post :create, :question => { question.attributes }
+    post :create, :question => question.attributes
     response.should redirect_to(quizes_get_started_question_url(assigns[:question]))
   end
 
@@ -44,14 +44,14 @@ describe Quizes::GetStarted::QuestionsController do
   it "update action should render edit template when model is invalid" do
     question = Factory(:question)
     Question.any_instance.stubs(:valid?).returns(false)
-    put :update, :id => question.id, :question => { question.attributes }
+    put :update, :id => question.id, :question => question.attributes
     response.should render_template(:edit)
   end
 
   it "update action should redirect when model is valid" do
     question = Factory(:question)
     Question.any_instance.stubs(:valid?).returns(true)
-    put :update, :id => question.id, :question => { question.attributes }
+    put :update, :id => question.id, :question => question.attributes
     response.should redirect_to(quizes_get_started_question_url(assigns[:question]))
   end
 end

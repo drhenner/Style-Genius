@@ -6,14 +6,6 @@ class Admin::Fulfillment::OrdersController < Admin::Fulfillment::BaseController
 
     respond_to do |format|
       format.html # index.html.erb
-
-      format.json { render :json => @orders.to_jqgrid_json(
-        [ :display_completed_at, :email, :number, :name ],
-        @orders.per_page,
-        @orders.current_page,
-        @orders.total_entries)
-
-      }
     end
   end
 

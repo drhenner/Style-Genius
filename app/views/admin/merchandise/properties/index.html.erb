@@ -1,5 +1,5 @@
 <% content_for :head do -%>
-  <%= javascript_include_tag "admin/index_grid" %>
+  <%#= javascript_include_tag "admin/index_grid" %>
 <% end %>
 
 <%= render :partial => '/admin/merchandise/sub_header'%>
@@ -8,33 +8,30 @@
 
 <div id="admin_properties_page_wrapper">
   <div id="admin_properties_grid_wrapper" class='column'>
-    <%= raw jqgrid("Properties", "admin_properties_grid", admin_merchandise_properties_path,
-      [
-        { :field => "identifing_name",   :label => "Name ID",     :width => 255,  :resizable => false },
-        { :field => "display_name",   :label => "Name",     :width => 200,  :resizable => false },
-        { :field => "display_active", :label => "Active?",  :width => 70,   :resizable => false }
-      ],
-      {
-        :height             => "360",
-        :alt_rows           => true,
-        :direct_selection   => true,
-        :editable           => true,
-        :selection_handler  => "Hadean.AdminIndexForm.editSelection",
-        :rownumbers         => false,
-        :rows_per_page      => 20,
-        :row_list           => [20, 50, 100]
-      }
-    ) %>
+    <table>
+      <tr>
+        <th>Name ID</th>
+        <th>Name</th>
+        <th>Active?</th>
+        <th></th>
+        <th></th>
+      </tr>
+
+      <% @properties.each do |property| %>
+        <tr>
+          <td><%= property.identifing_name %></td>
+          <td><%= property.display_name %></td>
+          <td><%= property.display_active %></td>
+          <td><%= link_to 'Show', admin_merchandise_property_path( property) %></td>
+          <td><%= link_to 'Edit', edit_admin_merchandise_property_path(property) %></td>
+        </tr>
+      <% end %>
+    </table>
+
+    <%= will_paginate @properties %>
   </div>
 
   <div id="admin_new_property_button" class="admin_new_button last">
     <%= link_to "New Property", new_admin_merchandise_property_path, :class => "button", :id => "new_property_button" %>
   </div>
 </div>
-<%= jqgrid_stylesheets %>
-<%= jqgrid_javascripts %>
-
-
-<script>
-  Hadean.AdminIndexForm.registerOnLoadHandler(Hadean.AdminIndexForm.initialize('/admin/merchandise/properties'));
-</script>

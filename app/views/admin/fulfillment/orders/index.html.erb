@@ -1,5 +1,5 @@
 <% content_for :head do -%>
-  <%= javascript_include_tag "admin/index_grid" %>
+  <%#= javascript_include_tag "admin/index_grid" %>
 <% end %>
 <%= render :partial => '/admin/fulfillment/sub_header'%>
 
@@ -7,31 +7,27 @@
 
 <div id="admin_fulfillment_orders_page_wrapper">
   <div id="admin_fulfillment_orders_grid_wrapper" class='column'>
-    <%= raw jqgrid("Orders", "admin_fulfillment_orders_grid", admin_fulfillment_orders_path,
-      [
-        { :field => "display_completed_at",   :label => "Completed",     :width => 100,  :resizable => false },
-        { :field => "email", :label => "Email",  :width => 200,   :resizable => false },
-        { :field => "number", :label => "Number",  :width => 100,   :resizable => false },
-        { :field => "name", :label => "Name",  :width => 100,   :resizable => false }
-      ], 
-      {
-        :height             => "350",
-        :alt_rows           => true,
-        :direct_selection   => true,
-        :editable           => true,
-        :selection_handler  => "Hadean.AdminIndexForm.editSelection",
-        :rownumbers         => false,
-        :rows_per_page      => 20,
-        :row_list           => [20, 50, 100]
-      }
-    ) %>
+
+    <table>
+      <tr>
+        <th>Number</th>
+        <th>Email</th>
+        <th>Completed at</th>
+        <th>Name</th>
+        <th></th>
+        <th></th>
+      </tr>
+
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.number %></td>
+        <td><%= order.email %></td>
+        <td><%= order.display_completed_at %></td>
+        <td><%= order.name %></td>
+        <td><%= link_to 'Edit', edit_admin_fulfillment_order_path(order) %></td>
+      </tr>
+    <% end %>
+    </table>
   </div>
 
 </div>
-<%= jqgrid_stylesheets %>
-<%= jqgrid_javascripts %>
-
-
-<script>
-  Hadean.AdminIndexForm.registerOnLoadHandler(Hadean.AdminIndexForm.initialize('/admin/fulfillment/orders'));
-</script>

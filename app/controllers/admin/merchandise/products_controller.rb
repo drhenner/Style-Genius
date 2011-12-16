@@ -6,13 +6,6 @@ class Admin::Merchandise::ProductsController < Admin::BaseController
     @products = Product.admin_grid(params)
     respond_to do |format|
       format.html
-      format.json { render :json => @products.to_jqgrid_json(
-        [ :name, :display_active ],
-        @products.per_page, #params[:page],
-        @products.current_page, #params[:rows],
-        @products.total_entries)
-
-      }
     end
   end
 

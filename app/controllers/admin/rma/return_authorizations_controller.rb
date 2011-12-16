@@ -7,13 +7,6 @@ class Admin::Rma::ReturnAuthorizationsController < Admin::Rma::BaseController
 
     respond_to do |format|
       format.html
-      format.json { render :json => @return_authorizations.to_jqgrid_json(
-        [ :user_name, :order_number, :number, :amount, :state ],
-        @return_authorizations.per_page, #params[:page],
-        @return_authorizations.current_page, #params[:rows],
-        @return_authorizations.total_entries)
-
-      }
     end
   end
 

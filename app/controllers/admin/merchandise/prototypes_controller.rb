@@ -5,12 +5,6 @@ class Admin::Merchandise::PrototypesController < Admin::BaseController
     @prototypes = Prototype.admin_grid(params)
     respond_to do |format|
       format.html
-      format.json { render :json => @prototypes.to_jqgrid_json(
-        [ :id, :name, :display_active ],
-        @prototypes.per_page, #params[:page],
-        @prototypes.current_page, #params[:rows],
-        @prototypes.total_entries)
-      }
     end
   end
 

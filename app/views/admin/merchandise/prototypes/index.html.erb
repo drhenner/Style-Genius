@@ -1,5 +1,5 @@
 <% content_for :head do -%>
-  <%= javascript_include_tag "admin/index_grid" %>
+  <%#= javascript_include_tag "admin/index_grid" %>
 <% end %>
 
 <%= render :partial => '/admin/merchandise/sub_header'%>
@@ -8,37 +8,31 @@
 
 <div id="admin_prototypes_page_wrapper">
   <div id="admin_prototypes_grid_wrapper" class='column'>
-    <%= raw jqgrid( "Prototypes", 
-                    "admin_prototypes_grid", 
-                    admin_merchandise_prototypes_path,
-      [
-        { :field => "id",           :index => 'id', :name => "id", :label => "id",     :width => 10,  :resizable => false },
-        { :field => "name",           :label => "Name",     :width => 355,  :resizable => false, :sortable => true },
-        { :field => "display_active", :label => "Active?",  :width => 70,   :resizable => false, :sortable => true }
-      ], 
-      {
-        :height             => "390",
-        :alt_rows           => true,
-        :direct_selection   => true,
-        :editable           => true,
-        :selection_handler  => "Hadean.AdminIndexForm.editSelection",
-        :rownumbers         => false,
-        :rows_per_page      => 20,
-        :row_list           => [20, 50, 100]
-      }
-    ) %>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Active</th>
+        <th></th>
+        <th></th>
+      </tr>
+
+      <% @prototypes.each do |prototype| %>
+        <tr>
+          <td><%= prototype.name %></td>
+          <td><%= prototype.display_active %></td>
+          <td><%= link_to 'Show', admin_merchandise_prototype_path( prototype) %></td>
+          <td><%= link_to 'Edit', edit_admin_merchandise_prototype_path(prototype) %></td>
+        </tr>
+      <% end %>
+    </table>
+
+    <%= will_paginate @prototypes %>
   </div>
 
-  <div  id="admin_new_prototype_button" 
+  <div  id="admin_new_prototype_button"
         class="admin_new_button last">
-    <%= link_to "New Prototype", new_admin_merchandise_prototype_path, 
-                                          :class  => "button", 
+    <%= link_to "New Prototype", new_admin_merchandise_prototype_path,
+                                          :class  => "button",
                                           :id     => "new_prototype_button" %>
   </div>
 </div>
-<%= jqgrid_stylesheets %>
-<%= jqgrid_javascripts %>
-
-<script>
-  Hadean.AdminIndexForm.registerOnLoadHandler(Hadean.AdminIndexForm.initialize('/admin/merchandise/prototypes'));
-</script>
