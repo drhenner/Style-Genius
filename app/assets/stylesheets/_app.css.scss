@@ -188,6 +188,9 @@ input.text, input.title, input[type="text"], input[type="password"], input[type=
   overflow:auto;
   padding-bottom: 3em;
 }
+.large-footer #main_wrapper {
+  padding-bottom: 22em;
+}
 
 .flash_error {
   @include error;
