@@ -13,6 +13,31 @@ body #body_wrapper {
   height: auto !important;
 }
 
+#left_welcome_panel {
+  font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
+  font-weight:bold;
+  color: #444;
+  font-size: 16px;
+}
+#right_welcome_panel {
+  border:3px solid #BBB;
+  font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
+  font-weight:bold;
+  color: #444;
+  font-size: 16px;
+  padding-left:10px;
+  padding-right:10px;
+  width: 450px;
+  margin-bottom: 20px;
+
+  h2 {
+    margin-bottom:0em;
+  }
+  li {
+    margin-bottom:1.25em;
+  }
+}
+
 a {
   text-decoration: none;
 }
